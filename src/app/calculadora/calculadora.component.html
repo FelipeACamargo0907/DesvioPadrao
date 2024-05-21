@@ -1,0 +1,62 @@
+<div class="mt-5 text-center text-info-emphasis">
+    <h1>Calculadora de Desvio Padrão</h1><br>
+</div>
+<div class="row justify-content-center text-info-emphasis mt-4">
+    <div class="col-3">
+        <div class="container text-center col-6">
+                <form [formGroup]="formGroupDados">
+                    <div class="text-center mt-5">
+                        <div class="mb-5">
+                        </div>
+                        <table class="table table-light table-sm">
+                            <thead class="table-secondary text-info-emphasis">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Altura</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let dados of Dados">
+                                    <td scope="row">{{dados.id}}</td>
+                                    <th scope="row">{{dados.altura}}</th>
+                                </tr>
+                            </tbody>
+                            <tfoot >
+                                <tr>
+                                    <th colspan="2">
+                                        <img style="width: 13%;" (click)="copyToClipboard()" src="assets/copy.png " alt="Ícone de Cópia">
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </form>
+        </div>
+    </div>
+    <div class="col-3">
+        <form [formGroup]="formGroupDados">
+            <div class="mt-3">
+                <label><b>Coloque os números do conjunto separados por ponto e vírgula:</b></label>
+            </div>
+            <div class="mb-2">
+                <small>ex: 144.23;488;122...</small>
+            </div>
+
+            <div class="input-group mb-4">
+                <textarea class="form-control" [(ngModel)]="inputString" formControlName="inputString"
+                    aria-label="With textarea"></textarea>
+            </div>
+
+            <div class="mb-4 d-grid gap-2 col-2 mx-auto">
+                <button class="btn btn-secondary " type="button"
+                    (click)="convertStringToArray()"><b>Calcular</b></button>
+            </div>
+
+            <div
+                class="p-3 text-secondary-emphasis -emphasis bg-secondary-subtle border border-secondary-emphasis rounded-3">
+                <b>Resultado:</b><br><br>
+                <span class="text-align" style="white-space: pre-line;">{{result}}</span>
+            </div>
+        </form>
+    </div>
+</div>
